@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENSI.ia</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#14001f;
+    color:white;
+    overflow-y:auto;
+}
+
+/* LOGIN */
+.login{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-box{
+    background:#240046;
+    padding:30px;
+    border-radius:15px;
+    width:300px;
+    text-align:center;
+}
+
+.login-box h2{
+    margin-bottom:15px;
+    color:#c77dff;
+}
+
+.login-box input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    background:#3c096c;
+    color:white;
+}
+
+.login-box button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#c77dff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* PAINEL */
+.painel{
+    display:none;
+    padding-bottom:120px;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#1a0033;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+    color:#c77dff;
+}
+
+.user{
+    font-size:12px;
+    text-align:right;
+}
+
+.user span{
+    color:#c77dff;
+    font-weight:bold;
+}
+
+/* BANNER */
+.banner{
+    margin:15px;
+    padding:20px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#240046,#3c096c);
+}
+
+.status-box{
+    display:flex;
+    justify-content:space-around;
+    margin:10px 15px;
+}
+
+.status{
+    background:#240046;
+    padding:15px;
+    border-radius:12px;
+    width:30%;
+    text-align:center;
+}
+
+.online{
+    color:#00ff88;
+}
+
+.card{
+    margin:15px;
+    padding:18px;
+    border-radius:15px;
+    background:#240046;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+}
+
+.card-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.icon{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+}
+
+.blue{ background:#7b2cbf; }
+.purple{ background:#9d4edd; }
+
+.resultado{
+    margin:15px;
+    padding:20px;
+    background:#240046;
+    border-radius:15px;
+    display:none;
+}
+
+.resultado div{
+    margin:6px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="login" id="login">
+    <div class="login-box">
+        <h2>🔐 ACESSO VIP</h2>
+        <input type="text" id="key" placeholder="Digite sua Key">
+        <button onclick="entrar()">ENTRAR</button>
+    </div>
+</div>
+
+<div class="painel" id="painel">
+
+<div class="header">
+    <div class="logo">⚡ SENSI.ia</div>
+    <div class="user">
+        USUÁRIO MACRO <br>
+        <span>ACESSO VITALÍCIO</span>
+    </div>
+</div>
+
+<div class="banner">
+    <small>ELITE EDITION</small>
+    <h2>SISTEMA ATIVO</h2>
+    <p>IA processando em tempo real</p>
+</div>
+
+<div class="status-box">
+    <div class="status">VERSÃO FF<br>OB43</div>
+    <div class="status">STATUS<br><span class="online">ONLINE</span></div>
+    <div class="status">LATÊNCIA<br>12ms</div>
+</div>
+
+<div class="card" onclick="gerarIA()">
+    <div class="card-left">
+        <div class="icon blue">✨</div>
+        <div><b>Gerador IA</b><br>Sensibilidade personalizada</div>
+    </div> ➜
+</div>
+
+<div class="card" onclick="gerarFamoso()">
+    <div class="card-left">
+        <div class="icon purple">⭐</div>
+        <div><b>Sensi dos Famosos</b><br>Configurações Pro Players</div>
+    </div> ➜
+</div>
+
+<div class="resultado" id="resultado"></div>
+
+</div>
+
+<script>
+function random(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function entrar(){
+    let key = document.getElementById("key").value;
+    if(key === "haridadevsk💎"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("painel").style.display="block";
+    } else {
+        alert("Key inválida!");
+    }
+}
+
+function mostrarResultado(html){
+    let box = document.getElementById("resultado");
+    box.style.display="block";
+    box.innerHTML = html;
+}
+
+function gerarIA(){
+    mostrarResultado(`
+        <h3>PLATAFORMA</h3>
+        <select id="plataforma" style="width:100%;padding:8px;margin:8px 0;background:#3c096c;color:white;border:none;border-radius:8px;">
+            <option>Android</option>
+            <option>iOS</option>
+        </select>
+
+        <h3>ESTILO DE JOGO</h3>
+        <select id="estilo" style="width:100%;padding:8px;margin:8px 0;background:#3c096c;color:white;border:none;border-radius:8px;">
+            <option>Full Capa</option>
+            <option>Mais Capa</option>
+            <option>Muito Rápido</option>
+            <option>Precisa</option>
+            <option>Mais Controle</option>
+        </select>
+
+        <button onclick="gerarSensiIA()" style="width:100%;padding:10px;margin-top:10px;background:#c77dff;border:none;border-radius:8px;font-weight:bold;">
+            GERAR SENSIBILIDADE
+        </button>
+
+        <div id="sensiFinal"></div>
+    `);
+}
+
+function gerarSensiIA(){
+    document.getElementById("sensiFinal").innerHTML = `
+        <hr>
+        <div><b>DPI:</b> ${random(400,960)}</div>
+        <div>Geral: ${random(100,200)}</div>
+        <div>Red Dot: ${random(90,200)}</div>
+        <div>Mira 2x: ${random(80,200)}</div>
+        <div>Mira 4x: ${random(70,200)}</div>
+        <div>Mira AWM: ${random(60,200)}</div>
+        <div>Olhadinha: ${random(100,200)}</div>
+    `;
+}
+
+function gerarFamoso(){
+    mostrarResultado(`
+        <h3>BUSCAR PRO PLAYER</h3>
+        <input type="text" id="nick" placeholder="Ex: Nobru, Bak..." 
+        style="width:100%;padding:8px;margin:8px 0;background:#3c096c;color:white;border:none;border-radius:8px;">
+
+        <button onclick="gerarSensiFamoso()" 
+        style="width:100%;padding:10px;margin-top:10px;background:#c77dff;border:none;border-radius:8px;font-weight:bold;">
+            OBTER CONFIGURAÇÃO
+        </button>
+
+        <div id="sensiFinal"></div>
+    `);
+}
+
+function gerarSensiFamoso(){
+    document.getElementById("sensiFinal").innerHTML = `
+        <hr>
+        <div><b>DPI:</b> ${random(500,960)}</div>
+        <div>Geral: ${random(120,200)}</div>
+        <div>Red Dot: ${random(110,200)}</div>
+        <div>Mira 2x: ${random(100,200)}</div>
+        <div>Mira 4x: ${random(90,200)}</div>
+        <div>Mira AWM: ${random(80,200)}</div>
+        <div>Olhadinha: ${random(120,200)}</div>
+    `;
+}
+</script>
+
+</body>
+</html>
